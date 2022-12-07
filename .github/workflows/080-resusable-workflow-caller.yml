@@ -11,14 +11,14 @@ on:
 
 jobs:
   call-workflow-A:
-    uses: punch161/github-actions/.github/workflows/080-reusable-workflow-called.yml@master
+    uses: ../.github/workflows/080-reusable-workflow-called.yml@master
     with:
       username: Hamza
     secrets:
       token: ${{ secrets.TOKEN }}
 
   call-workflow-B:
-    uses: punch161/github-action/.github/workflows/080-reusable-workflow-called.yml@master
+    uses: ../.github/workflows/080-reusable-workflow-called.yml@master
     with:
       username: Abdullah
     secrets:
