@@ -1,13 +1,19 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]   
+name: Reusable workflow example
+on:
+  workflow_call:
+    inputs:
+      config-path:
+        required: true
+        type: string
+    secrets:
+      envPAT:
+        required: true
 jobs:
-  check-bats-version:
+  reusable_workflow_job:
     runs-on: ubuntu-latest
+    environment: production
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+    - uses: actions/labeler@v4
+      with:
+        repo-token: ${{ secrets.envPAT }}
+        configuration-path: ${{ inputs.config-path }}
