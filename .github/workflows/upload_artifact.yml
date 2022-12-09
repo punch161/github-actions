@@ -20,6 +20,7 @@ jobs:
             path: ./.github/workflows
     job_2:
       name: download-artifact
+      needs: job_1
       runs-on: ubuntu-latest
       steps:
         - name: Download a single artifact
