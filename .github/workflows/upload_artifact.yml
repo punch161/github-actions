@@ -7,6 +7,7 @@ on:
     branches: [master]
 jobs:
   example-job:
+    runs-on: ubuntu-latest
     name: Save output
     steps:
       - shell: bash
@@ -16,4 +17,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: output-log-file
-          path: output.log    
+          path: output.log  
